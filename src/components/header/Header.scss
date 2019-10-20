@@ -1,0 +1,23 @@
+.header {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  
+    .logo-container {
+        width: 70px;
+        margin: 25px;
+    }
+  
+    .links-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    
+        .link {
+            margin: 10px 15px;
+            cursor: pointer;
+        }
+    }
+}

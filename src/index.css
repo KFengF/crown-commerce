@@ -1,8 +1,19 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
+    padding: 20px 4%;
     font-family: 'Open Sans Condensed', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #111;
+}
+
+a:hover {
+    color: #909494;
 }

@@ -9,7 +9,7 @@
     margin: 0 7.5px 15px;
     overflow: hidden;
     
-    .large {
+    &.large {
         height: 380px;
     }
 
@@ -36,7 +36,7 @@
 
     .background {
         width: 100%;
-        /* height: 100%; */
+        height: 100%;
         background-position: center;
         background-size: cover;
     }
