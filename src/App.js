@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import { auth } from './utils/firebase';
+import { auth, createUserDoc } from './utils/firebase';
 import Home from './pages/home/Home';
 import Shop from './pages/shop/Shop';
 import Header from './components/header/Header';
@@ -19,10 +19,29 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		this.unsubscribeFromAuth = auth.onAuthStateChanged(userState => {
-			//Este metodo invoca el callback cuando esta autenticado
+		this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+			//Este metodo invoca el callback cuando se logea o deslogea
 			//La sesion del usuario persiste hasta que se deslogee
-			this.setState({ currentUser: userState });
+
+			if (userAuth) {
+				//Si se logea
+				const userRef = await createUserDoc(userAuth);
+	
+				userRef.onSnapshot(snapshot => {
+					/* este metodo se usa para chekear si el base de datos cambio
+					pero lo usamos porque cada vez que lo llamamos nos da un 
+					callback con el objeto snapshot */
+	
+					this.setState({
+						currentUser: {
+							id: snapshot.id,
+							...snapshot.data()
+						}
+					}, () => console.log(this.state));
+				});
+			} else { //si se deslogea
+				this.setState({ currentUser: userAuth }, () => console.log(this.state))
+			}
 		});
 	}
 
