@@ -1,5 +1,5 @@
 import React from 'react';
-import { auth, createUserDoc } from '../../../../utils/firebase';
+import { auth, createUserDoc } from '../../../../utils/firebase/firebase';
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../../../../components/custom-button/CustomButton';
 import './SignUp.scss';
@@ -32,11 +32,12 @@ class SignUp extends React.Component {
             const { user } = await auth.createUserWithEmailAndPassword(email, password);
 
             await createUserDoc(user, { displayName });
-            //No se porque se esta pasando el displayName
+
             this.setState(initialState)
-            //Tampoco se porque se esta poniendo el estado inicial
+            //Limpiando los inputs
         } catch (error) {
-            console.error(error)
+            alert('Email already in use')
+            console.error(error);
         }
     }
 
@@ -51,7 +52,7 @@ class SignUp extends React.Component {
         const { displayName, email, password, confirmPassword } = this.state;
         return (
             <div className="sign-up" >
-                <h2 className="title" >I do not have an account</h2>
+                <h2 className="sign-up-title" >I do not have an account</h2>
                 <span>Sign up with your email and password</span>
                 <form className="sign-up-form" onSubmit={ this.onSubmit } >
                     <FormInput 

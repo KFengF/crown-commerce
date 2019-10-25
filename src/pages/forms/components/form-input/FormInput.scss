@@ -1,11 +1,11 @@
 /* Variables */
-$sub-color: grey;
+$sub-color: #555;
 $main-color: black;
 
 /* mixin es un bloque de codigo reusable como una funcion */
 @mixin shrinkLabel {
     top: -14px;
-    font-size: 12px;
+    font-size: 13px;
     color: $main-color;
 }
 
@@ -37,7 +37,7 @@ $main-color: black;
     }
 
     input[type='password'] {
-        letter-spacing: 0.3em;
+        letter-spacing: 4px;
     }
 
     .form-input-label {
@@ -49,6 +49,7 @@ $main-color: black;
         left: 5px;
         top: 10px;
         transition: 300ms ease all;
+        letter-spacing: 2px;
 
         &.shrink {
             @include shrinkLabel();

@@ -4,8 +4,12 @@
     flex-direction: column;
     margin-right: 5%;
 
-    .title {
-        margin: 10px 0;
+    .sign-in-title {
+        margin-bottom: 10px;
+    }
+
+    span {
+        letter-spacing: 1px;
     }
 
     .buttons-container {
