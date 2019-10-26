@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import setCurrentUser from './utils/redux/user/userActions';
 import { auth, getUserDocReference } from './utils/firebase/firebase';
@@ -49,19 +49,26 @@ class App extends React.Component {
 				<Switch>
 					<Route exact path="/" component={ Home } />
 					<Route path="/shop" component={ Shop } />
-					<Route path="/signin" component={ Forms } />
+					<Route exact path="/signin" render={ 
+						() => this.props.currentUser ? <Redirect to='/' /> : <Forms /> 
+					} />
 				</Switch>
 			</BrowserRouter>
 		);
 	}
 }
 
+
+const mapStateToProps = ({ user: { currentUser } }) => ({ 
+    currentUser
+})
+
 const mapDispatchToProps = dispatch => ({
 	setCurrentUser: user => dispatch(setCurrentUser(user))
 })
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 /* connect es un high order component, devuelve un componente con 
 la funcion setCurrentUser como props esta actualiza el store con 
-otro setCurrentUser que esta en redux/user/userAction y esta 
-funcion devuelve un objeto con propiedades payload y action */
+otro setCurrentUser que esta en redux/user/userAction.js y esta 
+funcion devuelve un objeto con propiedades payload y type */
