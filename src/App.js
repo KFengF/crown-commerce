@@ -59,13 +59,13 @@ class App extends React.Component {
 }
 
 
-const mapStateToProps = ({ user: { currentUser } }) => ({ 
+const mapStateToProps = ({ userReducer: { currentUser } }) => ({ 
     currentUser
-})
+});
 
 const mapDispatchToProps = dispatch => ({
 	setCurrentUser: user => dispatch(setCurrentUser(user))
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 /* connect es un high order component, devuelve un componente con 

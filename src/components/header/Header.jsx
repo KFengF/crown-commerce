@@ -30,8 +30,8 @@ const Header = ({ currentUser, hidden }) => (
 );
 
 const mapStateToProps = rootReducer => ({ 
-    currentUser: rootReducer.user.currentUser,
-    hidden: rootReducer.cart.hidden
+    currentUser: rootReducer.userReducer.currentUser,
+    hidden: rootReducer.cartReducer.hidden
 })
 
 export default connect(mapStateToProps)(Header);
