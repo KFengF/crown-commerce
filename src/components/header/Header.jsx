@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { auth } from '../../utils/firebase/firebase';
+import { createStructuredSelector } from 'reselect';
 import CartIcon from '../cart-icon/CartIcon';
 import CartDropdown from '../cart-dropdown/CartDropdown';
+import { hiddenSelector } from '../../utils/redux/cart/cartSelector';
+import { currentUserSelector } from '../../utils/redux/user/userSelector';
+import { auth } from '../../utils/firebase/firebase';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import './Header.scss';
 
@@ -29,10 +32,16 @@ const Header = ({ currentUser, hidden }) => (
     </div>
 );
 
+const mapStateToProps = createStructuredSelector({ 
+    currentUser: currentUserSelector,
+    hidden: hiddenSelector
+});
+
+/* El anterior mapStateToProps antes de reselect
 const mapStateToProps = rootReducer => ({ 
     currentUser: rootReducer.userReducer.currentUser,
     hidden: rootReducer.cartReducer.hidden
-})
+}); */
 
 export default connect(mapStateToProps)(Header);
 /* El nuevo componente estara conectado al store, cada vez que 
