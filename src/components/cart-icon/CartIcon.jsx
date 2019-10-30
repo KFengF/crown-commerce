@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { toggleCartDropdown } from '../../utils/redux/cart/cartActions';
-import { cartItemsCountSelector } from '../../utils/redux/cart/cartSelector';
+import { cartItemsCountSelector } from '../../utils/redux/cart/cartSelectors';
 import { ReactComponent as ShoppingIcon } from '../../assets/shoppingBag.svg';
 import './CartIcon.scss';
 

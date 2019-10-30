@@ -8,7 +8,7 @@ import Shop from './pages/shop/Shop';
 import Forms from './pages/forms/Forms';
 import Checkout from './pages/checkout/Checkout';
 import setCurrentUser from './utils/redux/user/userActions';
-import { currentUserSelector } from './utils/redux/user/userSelector';
+import { currentUserSelector } from './utils/redux/user/userSelectors';
 import { auth, getUserDocReference } from './utils/firebase/firebase';
 import './App.css';
 

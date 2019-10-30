@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import CheckoutItem from './components/checkout-item/CheckoutItem';
-import { cartItemsSelector, cartItemsTotalSelector } from '../../utils/redux/cart/cartSelector';
+import { cartItemsSelector, cartItemsTotalSelector } from '../../utils/redux/cart/cartSelectors';
 import './Checkout.scss';
 
 const Checkout = ({ cartItems, cartItemsTotal }) => (
