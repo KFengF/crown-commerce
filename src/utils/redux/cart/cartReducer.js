@@ -1,5 +1,5 @@
-import cartActionTypes from './cartType';
-import addItemToCart from './cartUtils';
+import cartActionTypes from './cartTypes';
+import { addItemToCart, removeItemFromCart, decreaseItemFromCart } from './cartUtils';
 
 const INITIAL_STATE = {
     hidden: true,
@@ -7,16 +7,29 @@ const INITIAL_STATE = {
 }
 
 const cartReducer = ( state=INITIAL_STATE, action ) => {
-    switch (action.type) {
-        case cartActionTypes.TOGGLE_CART_DROPDOWN:
+    const { TOGGLE_CART_DROPDOWN, ADD_ITEM, REMOVE_ITEM, DECREASE_ITEM } = cartActionTypes;
+    const { type, payload } = action;
+    const { hidden, cartItems } = state;
+    switch (type) {
+        case TOGGLE_CART_DROPDOWN:
             return {
                 ...state,
-                hidden: !state.hidden
+                hidden: !hidden
             }
-        case cartActionTypes.ADD_ITEM:
+        case ADD_ITEM:
             return {
                 ...state,
-                cartItems: addItemToCart(state.cartItems, action.payload)
+                cartItems: addItemToCart(cartItems, payload)
+            }
+        case REMOVE_ITEM:
+            return {
+                ...state,
+                cartItems: removeItemFromCart(cartItems, payload)
+            }
+        case DECREASE_ITEM:
+            return {
+                ...state,
+                cartItems: decreaseItemFromCart(cartItems, payload)
             }
         default:
             return state;
