@@ -5,8 +5,8 @@ tendra que pasar todo el state sino solamente lo que cambio.
 Sin esto simpre que se llama mapStateToProps, se actualizan TODOS
 los componentes */
 
-const cartSelector = state => state.cartReducer; //input selector
-//El state proviene de rootReducer
+const cartSelector = state => state.cart; //input selector
+//El state proviene de root
 
 const cartItemsSelector = createSelector(
     //output selector
@@ -15,7 +15,7 @@ const cartItemsSelector = createSelector(
     que sera usado como segundo parametro.
     tambien en vez de array se puede pasar como argumentos 
     separados, es igual */
-    cartReducer => cartReducer.cartItems
+    cart => cart.cartItems
 );
 
 const cartItemsCountSelector = createSelector(
@@ -28,7 +28,7 @@ const cartItemsCountSelector = createSelector(
 
 const hiddenSelector = createSelector(
     [cartSelector],
-    cartReducer => cartReducer.hidden
+    cart => cart.hidden
 );
 
 const cartItemsTotalSelector = createSelector(

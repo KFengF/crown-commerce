@@ -3,10 +3,10 @@ import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import Header from './components/header/Header';
-import Home from './pages/home/Home';
-import Shop from './pages/shop/Shop';
-import Forms from './pages/forms/Forms';
-import Checkout from './pages/checkout/Checkout';
+import HomePage from './pages/home-page/HomePage';
+import ShopPage from './pages/shop-page/ShopPage';
+import FormsPage from './pages/forms-page/FormsPage';
+import CheckoutPage from './pages/checkout-page/CheckoutPage';
 import setCurrentUser from './utils/redux/user/userActions';
 import { currentUserSelector } from './utils/redux/user/userSelectors';
 import { auth, getUserDocReference } from './utils/firebase/firebase';
@@ -50,12 +50,12 @@ class App extends React.Component {
 			<BrowserRouter>
 				<Header />
 				<Switch>
-					<Route exact path="/" component={ Home } />
-					<Route path="/shop" component={ Shop } />
+					<Route exact path="/" component={ HomePage } />
+					<Route path="/shop" component={ ShopPage } />
 					<Route exact path="/signin" render={ 
-						() => this.props.currentUser ? <Redirect to='/' /> : <Forms /> 
+						() => this.props.currentUser ? <Redirect to='/' /> : <FormsPage /> 
 					} />
-					<Route exact path="/checkout" component={ Checkout } />
+					<Route exact path="/checkout" component={ CheckoutPage } />
 				</Switch>
 			</BrowserRouter>
 		);
