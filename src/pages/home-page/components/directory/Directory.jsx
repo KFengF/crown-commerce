@@ -7,9 +7,10 @@ import './Directory.scss';
 
 const Directory = ({ sections }) => (
     <div className="directory" >
-    { Object.values(sections).map(({ id, title, imageUrl, linkUrl, size }) => 
-            <DirectoryItem key={ id } title={ title } imageUrl={ imageUrl } linkUrl={ linkUrl } size={ size } />
-        )}
+    { Object.keys(sections).map(key => {
+        const { id, imageUrl, linkUrl, size } = sections[key];
+        return <DirectoryItem key={ id } title={ key } imageUrl={ imageUrl } linkUrl={ linkUrl } size={ size } />
+    })}
     </div>
 );
 

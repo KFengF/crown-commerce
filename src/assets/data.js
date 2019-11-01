@@ -5,7 +5,6 @@ No se normalizo el array de los items porque estos no seran mapeados */
 const DATA = {
     hats: {
         id: 1,
-        title: 'Hats',
         imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
         linkUrl: 'shop/hats',
         items: [
@@ -59,7 +58,6 @@ const DATA = {
     },
     sneakers: {
         id: 2,
-        title: 'Sneakers',
         imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
         linkUrl: 'shop/sneakers',
         items: [
@@ -108,7 +106,6 @@ const DATA = {
     },
     jackets: {
         id: 3,
-        title: 'Jackets',
         imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
         linkUrl: 'shop/jackets',
         items: [
@@ -142,7 +139,6 @@ const DATA = {
     },
     womens: {
         id: 4,
-        title: 'Womens',
         imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
         linkUrl: 'shop/womens',
         size: 'large',
@@ -187,7 +183,6 @@ const DATA = {
     },
     mens: {
         id: 5,
-        title: 'Mens',
         imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
         linkUrl: 'shop/mens',
         size: 'large',

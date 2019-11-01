@@ -7,9 +7,10 @@ import './CollectionsOverview.scss';
 
 const CollectionsOverview = ({ collections }) => (
     <div className="collections-overview" >
-        { Object.values(collections).map( ({ id, ...otherCollectionAttrs }) => (
-            <CollectionPreview key={ id } { ...otherCollectionAttrs } />
-        )) }
+        { Object.keys(collections).map(key => {
+            const { id, ...otherCollectionAttrs } = collections[key];
+            return <CollectionPreview key={ id } title={ key } { ...otherCollectionAttrs } />
+        })}
     </div>
 );
 
