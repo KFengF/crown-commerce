@@ -1,10 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import './MenuItem.scss';
+import './DirectoryItem.scss';
 
-const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => (
+const DirectoryItem = ({ title, imageUrl, size, linkUrl, history, match }) => (
     <div 
-        className={ `menu-item ${ size }` }
+        className={ `directory-item ${ size }` }
         onClick={ () => history.push(`${ match.url }${ linkUrl }`) }
     >
         <div className="background" style={{ backgroundImage: `url(${ imageUrl })` }} />
@@ -15,4 +15,5 @@ const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => (
     </div>
 )
 
-export default withRouter(MenuItem);
+export default withRouter(DirectoryItem);
+//withRouter para que tenga los props history y match

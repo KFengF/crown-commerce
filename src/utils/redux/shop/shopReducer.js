@@ -1,7 +1,7 @@
-import shopData from './shopData';
+import DATA from '../../../assets/data';
 
 const INITIAL_STATE = {
-    collections: shopData
+    collections: DATA
 }
 
 const shopReducer = (state=INITIAL_STATE, action) => {
