@@ -9,7 +9,11 @@ const Directory = ({ sections }) => (
     <div className="directory" >
     { Object.keys(sections).map(key => {
         const { id, imageUrl, linkUrl, size } = sections[key];
-        return <DirectoryItem key={ id } title={ key } imageUrl={ imageUrl } linkUrl={ linkUrl } size={ size } />
+        return <DirectoryItem 
+            key={ id } title={ key } 
+            imageUrl={ imageUrl } linkUrl={ linkUrl }
+            size={ size }
+        />
     })}
     </div>
 );
