@@ -8,8 +8,8 @@ import shopReducer from './shop/shopReducer';
 
 const persistConfig = {
     key: 'root', //significa que en root se comenzara a almacenar todo
-    storage,
-    whitelist: ['cartReducer'] //Pasamos el reductor que queremos almacenar
+    storage, //Este storage importado indica el tipo de almacenamiento
+    whitelist: ['cart'] //Pasamos el reductor que queremos almacenar
     //no pasamos el userReducer porque este ya tiene persist con firebase
 }
 

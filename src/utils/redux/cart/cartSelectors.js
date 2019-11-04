@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 /* createSelector es una funcion que da un nuevo selector
 pero el state se queda en el cache y mapStateToProps no 
 tendra que pasar todo el state sino solamente lo que cambio.
-Sin esto simpre que se llama mapStateToProps, se actualizan TODOS
+Sin esto siempre que se llama mapStateToProps, se actualizan TODOS
 los componentes */
 
 const cartSelector = state => state.cart; //input selector

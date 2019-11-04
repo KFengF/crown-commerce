@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import CartIcon from '../cart-icon/CartIcon';
@@ -8,28 +7,30 @@ import { hiddenSelector } from '../../utils/redux/cart/cartSelectors';
 import { currentUserSelector } from '../../utils/redux/user/userSelectors';
 import { auth } from '../../utils/firebase/firebase';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
-import './Header.scss';
+import { HeaderContainer, LogoContainer, LinksContainer, LinkStyled } from './HeaderStyles'
+/* import './Header.scss'; */
 
 const Header = ({ currentUser, hidden }) => (
-    <div className="header" >
-        <Link className="logo-container" to="/" >
-            <Logo className="logo" />
-        </Link>
-        <div className="links-container" >
-            <Link className="link" to="/shop" >
+    <HeaderContainer>
+        <LogoContainer to="/" >
+            <Logo />
+        </LogoContainer>
+        <LinksContainer>
+            <LinkStyled to="/shop" >
                 SHOP
-            </Link>
-            <Link className="link" to="/shop" >
+            </LinkStyled>
+            <LinkStyled to="/shop" >
                 CONTACT
-            </Link>
+            </LinkStyled>
             { currentUser ?
-              <div className="link" onClick={ () => auth.signOut() } > LOG OUT </div>
-              : <Link className="link" to="/signin" >SIGN IN</Link>
+              <LinkStyled as='div' onClick={ () => auth.signOut() } > LOG OUT </LinkStyled>
+              //as='div' significa que no sera el componente Link sino el div tag
+              : <LinkStyled to="/signin" >SIGN IN</LinkStyled>
             }
             <CartIcon />
-        </div>
+        </LinksContainer>
         { !hidden && <CartDropdown /> }
-    </div>
+    </HeaderContainer>
 );
 
 const mapStateToProps = createStructuredSelector({ 

@@ -1,17 +1,18 @@
 import React from 'react';
 import CollectionItem from '../collection-item/CollectionItem';
-import './CollectionPreview.scss';
+import { CollectionPreviewDiv, TitleH2, PreviewDiv } from './CollectionPreviewStyles';
+/* import './CollectionPreview.scss'; */
 
 const CollectionPreview = ({ title, items }) => (
-    <div className="collection-preview">
-        <h2 className="title" >{ title }</h2>
-        <div className="preview">
+    <CollectionPreviewDiv>
+        <TitleH2>{ title }</TitleH2>
+        <PreviewDiv>
             { items.filter( (item, index) => index < 4 )
             .map( (item) => (
                 <CollectionItem key={ item.id } item={ item } />
             ))}
-        </div>
-    </div>
+        </PreviewDiv>
+    </CollectionPreviewDiv>
 );
 
 export default CollectionPreview;

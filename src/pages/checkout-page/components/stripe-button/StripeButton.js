@@ -1,8 +1,7 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-import { ReactComponent as Logo } from '../../assets/crown.svg';
 
-const StripeCheckoutButton = ({ price }) => {
+const StripeButton = ({ price }) => {
     const priceForStripe = price * 100;
     const publishableKey = 'pk_test_VrxaiUkkPtJPk6cnGHnWRMzk00JQ4d4gbF';
     const onToken = token => {
@@ -16,7 +15,7 @@ const StripeCheckoutButton = ({ price }) => {
             name="CROWN COMMERCE Ltd."
             billingAddress
             shippingAddress
-            image={ Logo }
+            image="http://svgshare.com/i/CUz.svg"
             description={ `Your total is $${ price }` }
             amount={ priceForStripe }
             panelLabel="Pay Now"
@@ -26,4 +25,4 @@ const StripeCheckoutButton = ({ price }) => {
     );
 }
 
-export default StripeCheckoutButton;
+export default StripeButton;

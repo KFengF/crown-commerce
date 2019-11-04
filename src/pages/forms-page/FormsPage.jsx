@@ -1,13 +1,14 @@
 import React from 'react';
 import SignIn from './components/sign-in/SignIn';
 import SignUp from './components/sign-up/SignUp';
-import './FormsPage.scss';
+import { FormPageDiv } from './FormsPageStyles';
+/* import './FormsPage.scss'; */
 
 const FormsPage = () => (
-    <div className="forms-page" >
+    <FormPageDiv>
         <SignIn />
         <SignUp />
-    </div>
+    </FormPageDiv>
 );
 
 export default FormsPage;

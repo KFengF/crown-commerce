@@ -5,26 +5,31 @@ import CustomButton from '../custom-button/CustomButton';
 import CartItem from '../cart-item/CartItem';
 import { cartItemsSelector } from '../../utils/redux/cart/cartSelectors';
 import { toggleCartDropdown } from '../../utils/redux/cart/cartActions';
-import './CartDropdown.scss';
+import { CartDropdownContainer, CartItemsContainer, EmptyMessageSpan } from './CartDropdownStyles';
+/* import './CartDropdown.scss'; */
+
+const customButtonStyles = { marginTop: 'auto' }
 
 const CartDropdown = ({ cartItems, history, dispatch }) => (
-    <div className="cart-dropdown" >
-        <div className="cart-items" >
+    <CartDropdownContainer>
+        <CartItemsContainer>
             { cartItems.length 
                 ? cartItems.map(item => 
                     <CartItem key={ item.id } item={ item } />
                 )
-                : <span className="empty-message">Your cart is empty</span>
+                : <EmptyMessageSpan>Your cart is empty</EmptyMessageSpan>
             }
-        </div>
-        <CustomButton onClick={ () => {
-            history.push('/checkout');
-            dispatch(toggleCartDropdown());
-            } 
-        }>
+        </CartItemsContainer>
+        <CustomButton
+            styles={ customButtonStyles }
+            onClick={ () => {
+                history.push('/checkout');
+                dispatch(toggleCartDropdown());
+            }}
+        >
             GO TO CHECKOUT
         </CustomButton>
-    </div>
+    </CartDropdownContainer>
 );
 
 const mapStateToProps = state => ({

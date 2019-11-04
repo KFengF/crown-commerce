@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import DirectoryItem from '../directory-item/DirectoryItem';
 import { sectionsSelector } from '../../../../utils/redux/directory/directorySelectors'
-import './Directory.scss';
+import { DirectoryDiv } from './DirectoryStyles';
+/* import './Directory.scss'; */
 
 const Directory = ({ sections }) => (
-    <div className="directory" >
+    <DirectoryDiv>
     { Object.keys(sections).map(key => {
         const { id, imageUrl, linkUrl, size } = sections[key];
         return <DirectoryItem 
@@ -15,7 +16,7 @@ const Directory = ({ sections }) => (
             size={ size }
         />
     })}
-    </div>
+    </DirectoryDiv>
 );
 
 const mapState = createStructuredSelector({

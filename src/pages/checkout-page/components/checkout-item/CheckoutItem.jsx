@@ -1,34 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { removeItem, addItem, decreaseItem } from '../../../../utils/redux/cart/cartActions';
-import './CheckoutItem.scss';
+import { CheckoutItemDiv, ImageDiv, NameSpan, QuantityDiv, PriceSpan, RemoveSpan } from './CheckoutItemStyles';
+/* import './CheckoutItem.scss'; */
 
 const CheckoutItem = ({ cartItem, removeItem, decreaseItem, addItem }) => {
     const { name, imageUrl, price, quantity } = cartItem;
     return (
-        <div className="checkout-item">
-            <div className="image-container">
+        <CheckoutItemDiv>
+            <ImageDiv>
                 <img src={ imageUrl } alt="checkout item" />
-            </div>
-            <span className="name" >{ name }</span>
-            <div className="quantity" >
-                <div 
-                    className="arrow" 
-                    onClick={ () => decreaseItem(cartItem) }
-                >
+            </ImageDiv>
+            <NameSpan>{ name }</NameSpan>
+            <QuantityDiv >
+                <span onClick={ () => decreaseItem(cartItem) } >
                     &#10094;
-                </div>
-                <span className="value">{ quantity }</span>
-                <p className="arrow" onClick={ () => addItem(cartItem) } >&#10095;</p>
-            </div>
-            <span className="price" >{ price }</span>
-            <div 
-                className="remove-button" 
-                onClick={ () => removeItem(cartItem) }
-            >
+                </span>
+                <p>{ quantity }</p>
+                <span onClick={ () => addItem(cartItem) } >
+                    &#10095;
+                </span>
+            </QuantityDiv>
+            <PriceSpan>{ price }</PriceSpan>
+            <RemoveSpan onClick={ () => removeItem(cartItem) } >
                 &#10005;
-            </div>
-        </div>
+            </RemoveSpan>
+        </CheckoutItemDiv>
     );
 }
 

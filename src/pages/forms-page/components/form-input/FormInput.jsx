@@ -1,15 +1,19 @@
 import React from 'react';
-import './FormInput.scss';
+import { FormInputDiv, Input, FormLabel } from './FormInputStyles';
+/* import './FormInput.scss'; */
 
-const FormInput = ({ onChange, label, ...otherProps }) => (
-    <div className="form-input" >
-        <input className="input" onChange={ onChange } { ...otherProps } />
+const FormInput = ({ onChange, label, value, ...otherProps }) => (
+    <FormInputDiv>
+        <Input onChange={ onChange } { ...otherProps } />
         { label && /* Esto significa si hay label retornar <label> */
-            <label 
-                className={ `${ otherProps.value.length && 'shrink' } form-input-label` }
-            >{ label }</label>
+            <FormLabel value={ value }>{ label }</FormLabel>
         }
-    </div>
+    </FormInputDiv>
 );
 
 export default FormInput;
+
+/* label && //Esto significa si hay label retornar <label> 
+<label 
+    className={ `${ otherProps.value.length && 'shrink' } form-input-label` }
+>{ label }</label> */
