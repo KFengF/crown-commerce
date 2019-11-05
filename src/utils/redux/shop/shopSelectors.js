@@ -10,10 +10,11 @@ const collectionsSelector = createSelector(
 const singleCollectionSelector = collectionUrlParam => 
     createSelector(
         [collectionsSelector],
-        collections => ({
-            ...collections[collectionUrlParam],
-            title: collectionUrlParam
-        })
+        collections => collections ? 
+            ({ ...collections[collectionUrlParam],
+                title: collectionUrlParam
+            }) :
+            null
     );
 
 export { collectionsSelector, singleCollectionSelector }

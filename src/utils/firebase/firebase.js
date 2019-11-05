@@ -57,5 +57,25 @@ const createUserDoc = async (userAuth, additionalData) => {
 
 const getUserDocReference = (userAuth) => firestore.doc(`users/${ userAuth.uid }`);
 
-export { auth, firestore, signInWithGoogle, createUserDoc, getUserDocReference }
+const addCollsAndDocs = async (collectionKey, objectsToAdd) => {
+    const collectionRef = firestore.collection(collectionKey);
+    //Obtenemos un puntero a la ruta
+
+    const batch = firestore.batch();
+    /* La idea es agreagar datos al firestore, se puede agregar 
+    uno por uno pero al haber error de conexion estos datos se
+    quedan en el aire, entonces usamos batch que envia los datos
+    una sola vez */
+
+    objectsToAdd.forEach(obj => {
+        const newDocRef = collectionRef.doc();
+        //Esto genera un nuevo id unico para el documento
+        batch.set(newDocRef, obj);
+        //agregando objeto al lote(batch)
+    });
+
+    return await batch.commit() //mandando la info que seria una promesa
+}
+
+export { auth, firestore, signInWithGoogle, createUserDoc, getUserDocReference, addCollsAndDocs }
 export default firebase;

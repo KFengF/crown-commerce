@@ -8,10 +8,16 @@ import { CollectionsOverviewDiv } from './CollectionOverviewStyles';
 
 const CollectionsOverview = ({ collections }) => (
     <CollectionsOverviewDiv>
-        { Object.keys(collections).map(key => {
-            const { id, ...otherCollectionAttrs } = collections[key];
-            return <CollectionPreview key={ id } title={ key } { ...otherCollectionAttrs } />
-        })}
+        { collections ? 
+            Object.keys(collections).map(key => {
+                const { id, ...otherCollectionAttrs } = collections[key];
+                return <CollectionPreview 
+                    key={ id } title={ key } 
+                    { ...otherCollectionAttrs }
+                />
+            }) :
+            null
+        }
     </CollectionsOverviewDiv>
 );
 

@@ -26,9 +26,8 @@ class App extends React.Component {
 				const userRef = getUserDocReference(userAuth);
 	
 				userRef.onSnapshot(snapshot => {
-					/* este metodo se usa para chekear si el base de datos cambio
-					pero lo usamos porque cada vez que lo llamamos nos da un 
-					callback con el objeto snapshot */
+					/* este metodo permite usar el snapshot, y esta pendiente
+					de cambios en el snapshot */
 	
 					setCurrentUser({
 						id: snapshot.id,
@@ -39,6 +38,14 @@ class App extends React.Component {
 				setCurrentUser(null);
 			}
 		});
+
+		/* addCollsAndDocs(
+			'collections', 
+			Object.keys(collections).map(key => ({
+				title: key,
+				items: collections[key].items
+			}))
+		); */
 	}
 
 	componentWillUnmount() {
@@ -64,7 +71,7 @@ class App extends React.Component {
 
 
 const mapStateToProps = createStructuredSelector({ 
-    currentUser: currentUserSelector
+	currentUser: currentUserSelector
 });
 
 const mapDispatchToProps = dispatch => ({
