@@ -7,11 +7,12 @@ import { CollectionPageDiv, CollectionTitleH2, CollectionItemsDiv } from './Coll
 
 const CollectionPage = ({ collection }) => {
     const { title, items } = collection;
+    console.log(collection)
     return (
         <CollectionPageDiv>
             <CollectionTitleH2>{ title }</CollectionTitleH2>
             <CollectionItemsDiv>
-                { items.map(item => 
+                { items && items.map(item => 
                     <CollectionItem key={ item.id } item={ item } />
                 )}
             </CollectionItemsDiv>

@@ -21,6 +21,6 @@ const Directory = ({ sections }) => (
 
 const mapState = createStructuredSelector({
     sections: sectionsSelector
-})
+});
 
 export default connect(mapState)(Directory);
