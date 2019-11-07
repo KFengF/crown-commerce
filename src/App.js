@@ -37,7 +37,7 @@ class App extends React.Component {
 			} else { //si se deslogea
 				setCurrentUser(null);
 			}
-		});
+		}, error => console.log(error));
 
 		/* addCollsAndDocs(
 			'collections', 

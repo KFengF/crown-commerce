@@ -7,7 +7,7 @@ import { hiddenSelector } from '../../utils/redux/cart/cartSelectors';
 import { currentUserSelector } from '../../utils/redux/user/userSelectors';
 import { auth } from '../../utils/firebase/firebase';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
-import { HeaderContainer, LogoContainer, LinksContainer, LinkStyled } from './HeaderStyles'
+import { HeaderContainer, LogoContainer, LinksContainer, LinkStyled, LinkSpan } from './HeaderStyles'
 /* import './Header.scss'; */
 
 const Header = ({ currentUser, hidden }) => (
@@ -23,9 +23,9 @@ const Header = ({ currentUser, hidden }) => (
                 CONTACT
             </LinkStyled>
             { currentUser ?
-              <LinkStyled as='div' onClick={ () => auth.signOut() } > LOG OUT </LinkStyled>
-              //as='div' significa que no sera el componente Link sino el div tag
+                <LinkSpan onClick={ () => auth.signOut() } > LOG OUT </LinkSpan>
               : <LinkStyled to="/signin" >SIGN IN</LinkStyled>
+              //En vez de usar LinkSpan se podria usar LinkStyled as="span"
             }
             <CartIcon />
         </LinksContainer>

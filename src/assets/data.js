@@ -9,7 +9,7 @@ const DATA = {
         linkUrl: 'shop/hats'
     },
     sneakers: {
-        id: 2,
+    id: 2,
         imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
         linkUrl: 'shop/sneakers'
     },
