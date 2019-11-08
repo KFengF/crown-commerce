@@ -1,11 +1,13 @@
 import React from 'react';
 import CollectionItem from '../collection-item/CollectionItem';
-import { CollectionPreviewDiv, TitleH2, PreviewDiv } from './CollectionPreviewStyles';
+import { CollectionPreviewDiv, TitleLink, PreviewDiv } from './CollectionPreviewStyles';
 /* import './CollectionPreview.scss'; */
 
-const CollectionPreview = ({ title, items }) => (
+const CollectionPreview = ({ title, items, match }) => (
     <CollectionPreviewDiv>
-        <TitleH2>{ title }</TitleH2>
+        <TitleLink to={ `shop/${ title }` } >
+            { title }
+        </TitleLink>
         <PreviewDiv>
             { items.filter( (item, index) => index < 4 )
             .map( (item) => (

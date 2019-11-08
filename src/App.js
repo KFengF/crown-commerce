@@ -39,7 +39,8 @@ class App extends React.Component {
 			}
 		}, error => console.log(error));
 
-		/* addCollsAndDocs(
+		/* La funcion para agregar los items al firebase
+		addCollsAndDocs(
 			'collections', 
 			Object.keys(collections).map(key => ({
 				title: key,

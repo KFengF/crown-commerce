@@ -77,5 +77,26 @@ const addCollsAndDocs = async (collectionKey, objectsToAdd) => {
     return await batch.commit() //mandando la info que seria una promesa
 }
 
-export { auth, firestore, signInWithGoogle, createUserDoc, getUserDocReference, addCollsAndDocs }
+const convertCollsToMap = snapshot => {
+    const newDataArray = snapshot.docs.map(doc => {
+        const { title, items } = doc.data();
+
+        return {
+            routeName: encodeURI(title),
+            id: doc.id,
+            title,
+            items
+        }
+    });
+
+    return newDataArray.reduce((accumulator, data) => {
+        accumulator[data.title] = data;
+        return accumulator;
+    }, {});
+}
+
+export { auth, firestore, signInWithGoogle,
+    createUserDoc, getUserDocReference, addCollsAndDocs,
+    convertCollsToMap
+}
 export default firebase;
