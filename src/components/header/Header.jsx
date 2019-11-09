@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import CartIcon from '../cart-icon/CartIcon';
 import CartDropdown from '../cart-dropdown/CartDropdown';
+import { signOut } from '../../utils/redux/user/userActions';
 import { hiddenSelector } from '../../utils/redux/cart/cartSelectors';
 import { currentUserSelector } from '../../utils/redux/user/userSelectors';
-import { auth } from '../../utils/firebase/firebase';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import { HeaderContainer, LogoContainer, LinksContainer, LinkStyled, LinkSpan } from './HeaderStyles'
 /* import './Header.scss'; */
 
-const Header = ({ currentUser, hidden }) => (
+const Header = ({ currentUser, hidden, signOut }) => (
     <HeaderContainer>
         <LogoContainer to="/" >
             <Logo />
@@ -23,7 +23,7 @@ const Header = ({ currentUser, hidden }) => (
                 CONTACT
             </LinkStyled>
             { currentUser ?
-                <LinkSpan onClick={ () => auth.signOut() } > LOG OUT </LinkSpan>
+                <LinkSpan onClick={ signOut } > LOG OUT </LinkSpan>
               : <LinkStyled to="/signin" >SIGN IN</LinkStyled>
               //En vez de usar LinkSpan se podria usar LinkStyled as="span"
             }
@@ -38,13 +38,17 @@ const mapStateToProps = createStructuredSelector({
     hidden: hiddenSelector
 });
 
+const mapDispatchToProps = dispatch => ({
+    signOut: () => dispatch(signOut())
+})
+
 /* El anterior mapStateToProps antes de reselect
 const mapStateToProps = rootReducer => ({ 
     currentUser: rootReducer.userReducer.currentUser,
     hidden: rootReducer.cartReducer.hidden
 }); */
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
 /* El nuevo componente estara conectado al store, cada vez que 
 la propiedad currentUser en el store sea actualizado, mapStateToProps 
 hara que Header tenga el nuevo currentUser */

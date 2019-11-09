@@ -1,14 +1,13 @@
-import { takeLatest, put, all, call } from 'redux-saga/effects';
+import { takeLatest, take, put, all, call } from 'redux-saga/effects';
 import userActionTypes from './userTypes';
-import { signInSuccess, signInFailure } from './userActions';
+import { signInSuccess, signInFailure, signOut } from './userActions';
 import { auth, getUserDocReference, signInWithGoogle } from '../../firebase/firebase';
 
-const { GOOGLE_SIGN_IN_START, EMAIL_SIGN_IN_START } = userActionTypes;
+const { GOOGLE_SIGN_IN_START, EMAIL_SIGN_IN_START, SIGN_OUT } = userActionTypes;
 
 function* signIn(userAuth) {
     const userDocRef = yield call(getUserDocReference, userAuth);
     const docSnapshot = yield userDocRef.get();
-    if (!docSnapshot.exists) throw Error("this user doesn't exists")
     yield put(signInSuccess({
         id: docSnapshot.id,
         ...docSnapshot.data()
@@ -41,9 +40,15 @@ function* onEmailSignInStart() {
     yield takeLatest(EMAIL_SIGN_IN_START, emailSignIn)
 }
 
+function* signOutSaga() {
+    yield put(signOut())
+    yield take(SIGN_OUT)
+}
+
 export function* userSagas() {
     yield all([
         call(onGoogleSignInStart),
-        call(onEmailSignInStart)
+        call(onEmailSignInStart),
+        call(signOutSaga)
     ]);
 }

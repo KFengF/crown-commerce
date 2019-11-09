@@ -4,9 +4,13 @@ import { FormInputDiv, Input, FormLabel } from './FormInputStyles';
 
 const FormInput = ({ onChange, label, value, ...otherProps }) => (
     <FormInputDiv>
-        <Input onChange={ onChange } { ...otherProps } />
+        <Input
+            onChange={ onChange }
+            value={ value }
+            { ...otherProps }
+        />
         { label && /* Esto significa si hay label retornar <label> */
-            <FormLabel value={ value }>{ label }</FormLabel>
+            <FormLabel value={ value } >{ label }</FormLabel>
         }
     </FormInputDiv>
 );
