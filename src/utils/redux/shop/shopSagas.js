@@ -7,6 +7,7 @@ export function* fetchCollectionsAsync() { //Esto es una funcion generator
     try {
         const collectionRef = firestore.collection('collections');
         const snapshot = yield collectionRef.get();
+        if (snapshot.empty) throw Error('Firestore querySnapshot is empty');
         const collectionsMap = yield call(convertCollsToMap, snapshot);
         //call invoca la funcion de manera que la saga sepa
         yield put(fetchCollectionsSuccess(collectionsMap));

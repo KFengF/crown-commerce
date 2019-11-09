@@ -7,15 +7,14 @@ import HomePage from './pages/home-page/HomePage';
 import ShopPage from './pages/shop-page/ShopPage';
 import FormsPage from './pages/forms-page/FormsPage';
 import CheckoutPage from './pages/checkout-page/CheckoutPage';
-import setCurrentUser from './utils/redux/user/userActions';
 import { currentUserSelector } from './utils/redux/user/userSelectors';
-import { auth, getUserDocReference } from './utils/firebase/firebase';
 import './App.css';
 
 class App extends React.Component {
-	unsubscribeFromAuth = null;
+	/* unsubscribeFromAuth = null; */
 
 	componentDidMount() {
+		/* antes de usar saga:
 		const { setCurrentUser } = this.props;
 		this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
 			//Este metodo invoca el callback cuando se logea o deslogea
@@ -26,8 +25,8 @@ class App extends React.Component {
 				const userRef = getUserDocReference(userAuth);
 	
 				userRef.onSnapshot(snapshot => {
-					/* este metodo permite usar el snapshot, y esta pendiente
-					de cambios en el snapshot */
+					//este metodo permite usar el snapshot, y esta pendiente
+					//de cambios en el snapshot
 	
 					setCurrentUser({
 						id: snapshot.id,
@@ -37,7 +36,7 @@ class App extends React.Component {
 			} else { //si se deslogea
 				setCurrentUser(null);
 			}
-		}, error => console.log(error));
+		}, error => console.log(error)); */
 
 		/* La funcion para agregar los items al firebase
 		addCollsAndDocs(
@@ -50,7 +49,7 @@ class App extends React.Component {
 	}
 
 	componentWillUnmount() {
-		this.unsubscribeFromAuth();
+		/* this.unsubscribeFromAuth(); */
 	}
 
 	render() {
@@ -75,11 +74,12 @@ const mapStateToProps = createStructuredSelector({
 	currentUser: currentUserSelector
 });
 
+/* antes de saga:
 const mapDispatchToProps = dispatch => ({
 	setCurrentUser: user => dispatch(setCurrentUser(user))
-});
+}); */
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
 /* connect es un high order component, devuelve un componente con 
 la funcion setCurrentUser como props esta actualiza el store con 
 otro setCurrentUser que esta en redux/user/userAction.js y esta 

@@ -21,13 +21,15 @@ const auth = firebase.auth();
 const firestore = firebase.firestore();
 //Iniciando el firebase.auth.auth y firebase.firestore.firestore
 
-const provider = new firebase.auth.GoogleAuthProvider();
+const googleProvider = new firebase.auth.GoogleAuthProvider();
 //Iniciando el proveedor de autenticacion con google
-provider.setCustomParameters({ prompt: 'select_account' });
+googleProvider.setCustomParameters({ prompt: 'select_account' });
 //Opcion que permite al usuario elegir cual correo usar entre sus correos
 
-const signInWithGoogle = () => auth.signInWithPopup(provider);
+const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 //funcion que abre un popup para logear con la autenticacion de google como argumento
+
+const getUserDocReference = (userAuth) => firestore.doc(`users/${ userAuth.uid }`);
 
 const createUserDoc = async (userAuth, additionalData) => {
     /* userAuth seria un objeto general del usuario autenticado y contiene
@@ -50,12 +52,10 @@ const createUserDoc = async (userAuth, additionalData) => {
                 ...additionalData
             });
         } catch (error) {
-            console.log('Error creating user', error.message);
+            console.error('Error creating user', error.message);
         }
     }
 }
-
-const getUserDocReference = (userAuth) => firestore.doc(`users/${ userAuth.uid }`);
 
 const addCollsAndDocs = async (collectionKey, objectsToAdd) => {
     const collectionRef = firestore.collection(collectionKey);
