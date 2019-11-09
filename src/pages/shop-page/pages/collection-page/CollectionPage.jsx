@@ -6,17 +6,19 @@ import { CollectionPageDiv, CollectionTitleH2, CollectionItemsDiv } from './Coll
 /* import './CollectionPage.scss'; */
 
 const CollectionPage = ({ collection }) => {
-    const { title, items } = collection;
-    return (
-        <CollectionPageDiv>
-            <CollectionTitleH2>{ title }</CollectionTitleH2>
-            <CollectionItemsDiv>
-                { items.map(item => 
-                    <CollectionItem key={ item.id } item={ item } />
-                )}
-            </CollectionItemsDiv>
-        </CollectionPageDiv>
-    );    
+    if (collection) {
+        const { title, items } = collection;
+        return (
+            <CollectionPageDiv>
+                <CollectionTitleH2>{ title }</CollectionTitleH2>
+                <CollectionItemsDiv>
+                    { items.map(item => 
+                        <CollectionItem key={ item.id } item={ item } />
+                    )}
+                </CollectionItemsDiv>
+            </CollectionPageDiv>
+        );    
+    } else return null;
 }
 
 const mapStateToProps = (state, ownProps) => ({

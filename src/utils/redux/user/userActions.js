@@ -5,7 +5,10 @@ const {
     EMAIL_SIGN_IN_START,
     SIGN_IN_SUCCESS,
     SIGN_IN_FAILURE,
-    SIGN_OUT
+    SIGN_OUT,
+    SIGN_UP_START,
+    SIGN_UP_SUCCESS,
+    SIGN_UP_FAILURE
 } = userActionTypes;
 
 export const googleSignInStart = () => ({
@@ -29,4 +32,18 @@ export const signInFailure = error => ({
 
 export const signOut = () => ({
     type: SIGN_OUT
+});
+
+export const signUpStart = datas => ({
+    type: SIGN_UP_START,
+    payload: datas
+});
+
+export const signUpSuccess = () => ({
+    type: SIGN_UP_SUCCESS
+});
+
+export const signUpFailure = error => ({
+    type: SIGN_UP_FAILURE,
+    payload: error
 });

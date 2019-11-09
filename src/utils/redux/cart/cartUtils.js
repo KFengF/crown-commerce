@@ -1,5 +1,4 @@
 const addItemToCart = (cartItems, cartItemToAdd) => {
-    //Tal vez halla mejor manera de hacerlo pero este es adecuado para React
     const cartItemFound = cartItems.find(
         cartItem => cartItem.id === cartItemToAdd.id
     );
