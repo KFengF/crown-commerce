@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../../../../components/custom-button/CustomButton';
@@ -6,25 +6,16 @@ import { googleSignInStart, emailSignInStart } from '../../../../utils/redux/use
 import { SignInDiv, SignInTitleH2, SignInSpan, ButtonDiv } from './SignInStyles';
 /* import './SignIn.scss'; */
 
-const initialState = {
-    email: '',
-    password: ''
-}
+const SignIn = ({ emailSignInStart, googleSignInStart }) => {
+    const initialState = { email: '', password: '' }
+    const [credentials, setCredentials] = useState(initialState);
+    const { email, password } = credentials;
 
-class SignIn extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = initialState;
-    }
-
-    onSubmit = async event => {
+    const onSubmit = async event => {
         event.preventDefault();
-        const { email, password } = this.state;
-        const { emailSignInStart } = this.props;
 
         emailSignInStart(email, password);
-        this.setState(initialState);
+        setCredentials(initialState);
         //Limpiando los inputs
 
         /* antes de usar saga:
@@ -38,57 +29,53 @@ class SignIn extends React.Component {
         } */
     }
 
-    onChange = event => {
+    const onChange = event => {
         const { name, value } = event.target;
-        this.setState({ [name]: value });
+        setCredentials({ ...credentials, [name]: value });
     }
 
-    render() {
-        const { email, password } = this.state;
-        const { googleSignInStart } = this.props;
-        return (
-            <SignInDiv>
-                <SignInTitleH2>I already have an account</SignInTitleH2>
-                <SignInSpan>Sign in with your email and password</SignInSpan>
-                <form onSubmit={ this.onSubmit } >
-                    <FormInput
-                        name="email"
-                        value={ email }
-                        type="email"
-                        onChange={ this.onChange }
-                        label="Email"
-                        required 
-                    />
-                    <FormInput
-                        name="password"
-                        value={ password }
-                        type="password"
-                        onChange={ this.onChange }
-                        label="Password"
-                        required
-                    />
-                    <ButtonDiv>
-                        <CustomButton type="submit" >
-                            Sign in
-                        </CustomButton>
-                        <CustomButton
-                            type="button"
-                            onClick={ googleSignInStart }
-                            isGoogleSignIn
-                        >
-                            Sign in with Google
-                        </CustomButton>
-                    </ButtonDiv>
-                </form>
-            </SignInDiv>
-        )
-    }
+    return (
+        <SignInDiv>
+            <SignInTitleH2>I already have an account</SignInTitleH2>
+            <SignInSpan>Sign in with your email and password</SignInSpan>
+            <form onSubmit={ onSubmit } >
+                <FormInput
+                    name="email"
+                    value={ email }
+                    type="email"
+                    onChange={ onChange }
+                    label="Email"
+                    required 
+                />
+                <FormInput
+                    name="password"
+                    value={ password }
+                    type="password"
+                    onChange={ onChange }
+                    label="Password"
+                    required
+                />
+                <ButtonDiv>
+                    <CustomButton type="submit" >
+                        Sign in
+                    </CustomButton>
+                    <CustomButton
+                        type="button"
+                        onClick={ googleSignInStart }
+                        isGoogleSignIn
+                    >
+                        Sign in with Google
+                    </CustomButton>
+                </ButtonDiv>
+            </form>
+        </SignInDiv>
+    );
 }
 
 const mapDispatch = dispatch => ({
     googleSignInStart: () => dispatch(googleSignInStart()),
     emailSignInStart: (email, password) => 
-    dispatch(emailSignInStart({ email, password }))
+        dispatch(emailSignInStart({ email, password }))
 })
 
 export default connect(null, mapDispatch)(SignIn);
