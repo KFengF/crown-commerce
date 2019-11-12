@@ -16,11 +16,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {
-    const rootPath = __dirname + 'client/build';
-    app.use(express.static(path.join(rootPath)));
+    app.use(express.static(path.join(__dirname, 'client/build')));
 
     app.get('*', function(req, res) {
-        res.sendFile(path.join(rootPath, 'index.html'));
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
     });
 }
 
@@ -38,9 +37,9 @@ app.post('/payment', (req, res) => {
 
     stripe.charges.create(body, (stripeErr, stripeRes) => {
         if (stripeErr) {
-            res.status(500).send({ error: stripeErr });
+            res.status(500).json({ error: stripeErr });
         } else {
-            res.status(200).send({ success: stripeRes });
+            res.status(200).json({ success: stripeRes });
         }
     });
 });
