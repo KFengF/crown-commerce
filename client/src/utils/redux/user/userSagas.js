@@ -1,9 +1,9 @@
-import { takeLatest, take, put, all, call } from 'redux-saga/effects';
+import { takeLatest, put, all, call } from 'redux-saga/effects';
 import userActionTypes from './userTypes';
-import { signInSuccess, signInFailure, signOut, signUpSuccess, signUpFailure, emailSignInStart } from './userActions';
+import { signInSuccess, signInFailure, signUpSuccess, signUpFailure, emailSignInStart } from './userActions';
 import { auth, getUserDocReference, signInWithGoogle, createUserDoc } from '../../firebase/firebase';
 
-const { GOOGLE_SIGN_IN_START, EMAIL_SIGN_IN_START, SIGN_OUT, SIGN_UP_START } = userActionTypes;
+const { GOOGLE_SIGN_IN_START, EMAIL_SIGN_IN_START, SIGN_UP_START } = userActionTypes;
 
 function* signIn(userAuth) {
     const userDocRef = yield call(getUserDocReference, userAuth);
@@ -55,16 +55,10 @@ function* onSignUpStart() {
     yield takeLatest(SIGN_UP_START, signUpSaga)
 }
 
-function* signOutSaga() {
-    yield put(signOut());
-    yield take(SIGN_OUT);
-}
-
 export function* userSagas() {
     yield all([
         call(onGoogleSignInStart),
         call(onEmailSignInStart),
-        call(signOutSaga),
         call(onSignUpStart)
     ]);
 }
