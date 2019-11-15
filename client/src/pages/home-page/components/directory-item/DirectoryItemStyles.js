@@ -1,12 +1,8 @@
-import styled, { css } from 'styled-components';
-
-const largeStyles = css`height: 380px;`;
-
-const setLargeStyle = props => props.size ? largeStyles : null;
+import styled from 'styled-components';
 
 export const DirectoryItemDiv = styled.div`
     min-width: 30%;
-    height: 240px;
+    height: ${ props => props.size ? '380px' : '240px' };
     flex: 1 1 auto;
     display: flex;
     align-items: center;
@@ -14,8 +10,6 @@ export const DirectoryItemDiv = styled.div`
     border: 1px solid black;
     margin: 0 7.5px 15px;
     overflow: hidden;
-
-    ${ setLargeStyle }
 
     &:first-child {
         margin-right: 7.5px;
@@ -56,6 +50,10 @@ export const DirectoryItemDiv = styled.div`
         background-color: white;
         opacity: 0.7;
         position: absolute;
+    }
+
+    @media screen and (max-width: 800px) {
+        height: 200px;
     }
 `;
 

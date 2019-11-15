@@ -19,6 +19,16 @@ export const CollectionItemDiv = styled.div`
             display: block;
         }
     }
+
+    @media screen and (max-width: 800px) {
+        width: 40vw;
+
+        &:hover {
+            div {
+                opacity: unset;
+            }
+        }
+    }
 `;
 
 export const ImageDiv = styled.div`
@@ -42,6 +52,13 @@ export const CustomButtonStyled = styled(CustomButton)`
     top: 255px;
     width: 80%;
     opacity: 0.85;
+
+    @media screen and (max-width: 800px) {
+        opacity: 0.9;
+        display: block;
+        min-width: unset;
+        padding: 0 10px;
+    }
 `;
 
 export const NameSpan = styled.span`

@@ -8,13 +8,13 @@ import ShopPage from './pages/shop-page/ShopPage';
 import FormsPage from './pages/forms-page/FormsPage';
 import CheckoutPage from './pages/checkout-page/CheckoutPage';
 import { currentUserSelector } from './utils/redux/user/userSelectors';
-import './App.css';
+import { GlobalStyle } from './globalStyles';
 
 class App extends React.Component {
 	/* unsubscribeFromAuth = null; */
 
-	componentDidMount() {
-		/* antes de usar saga:
+	/* componentDidMount() {
+		 antes de usar saga:
 		const { setCurrentUser } = this.props;
 		this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
 			//Este metodo invoca el callback cuando se logea o deslogea
@@ -36,25 +36,26 @@ class App extends React.Component {
 			} else { //si se deslogea
 				setCurrentUser(null);
 			}
-		}, error => console.log(error)); */
+		}, error => console.log(error));
 
-		/* La funcion para agregar los items al firebase
+		 La funcion para agregar los items al firebase
 		addCollsAndDocs(
 			'collections', 
 			Object.keys(collections).map(key => ({
 				title: key,
 				items: collections[key].items
 			}))
-		); */
+		); 
 	}
 
 	componentWillUnmount() {
-		/* this.unsubscribeFromAuth(); */
-	}
+		 this.unsubscribeFromAuth();
+	} */
 
 	render() {
 		return (
 			<BrowserRouter>
+				<GlobalStyle />
 				<Header />
 				<Switch>
 					<Route exact path="/" component={ HomePage } />

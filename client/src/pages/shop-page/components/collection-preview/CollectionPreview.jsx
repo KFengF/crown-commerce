@@ -3,7 +3,7 @@ import CollectionItem from '../collection-item/CollectionItem';
 import { CollectionPreviewDiv, TitleLink, PreviewDiv } from './CollectionPreviewStyles';
 /* import './CollectionPreview.scss'; */
 
-const CollectionPreview = ({ title, items, match }) => (
+const CollectionPreview = ({ title, items }) => (
     <CollectionPreviewDiv>
         <TitleLink to={ `shop/${ title }` } >
             { title }

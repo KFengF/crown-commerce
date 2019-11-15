@@ -12,17 +12,40 @@ export const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     margin-bottom: 25px;
+
+    @media screen and (max-width: 800px) {
+        height: 55px;
+        margin-bottom: 20px;
+    }
 `;
 
 export const LogoContainer = styled(Link)`
-    width: 70px;
+    width: 50px;
     margin: 25px 5%;
+
+    svg {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 800px) {
+        width: 30vw;
+        margin: 0;
+    }
+
+    @media screen and (max-width: 400px) {
+        width: 10vw;
+        margin: 0;
+    }
 `;
 
 export const LinksContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
+    @media screen and (max-width: 800px) {
+        width: 80vw;
+    }
 `;
 
 export const LinkStyled = styled(Link)`${ linkStyles }`;
