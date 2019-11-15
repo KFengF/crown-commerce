@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const headerStyles = css`width: 23%;`;
+const headerStyles = css`width: 22%;`;
 
 export const CheckoutItemDiv = styled.div`
     width: 100%;
@@ -9,12 +9,16 @@ export const CheckoutItemDiv = styled.div`
     border-bottom: 1px solid darkgrey;
     padding: 15px 0;
     font-size: 20px;
+    text-align: center;
     align-items: center;
+
+    @media screen and (max-width: 800px) {
+        font-size: 14px;
+    }
 `;
 
 export const ImageDiv = styled.div`
-    width: 23%;
-    padding-right: 15px;
+    ${ headerStyles }
 
     img {
         width: 100%;
@@ -25,6 +29,7 @@ export const NameSpan = styled.span`${ headerStyles }`;
 
 export const QuantityDiv = styled.div`
     ${ headerStyles }
+
     display: flex;
 
     span {
@@ -39,6 +44,7 @@ export const QuantityDiv = styled.div`
 export const PriceSpan = styled.span`${ headerStyles }`;
 
 export const RemoveSpan = styled.span`
+    width: 12%;
     padding-left: 12px;
     cursor: pointer;
 `;

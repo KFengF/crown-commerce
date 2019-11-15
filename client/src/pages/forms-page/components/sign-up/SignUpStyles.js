@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const SignUpDiv = styled.div`
-    width: 400px;
+    width: 90%;
+    max-width: 440px;
     display: flex;
     flex-direction: column;
-    margin-right: 5%;
 `;
 
 export const SignUpTitleH2 = styled.h2`margin-bottom: 10px;`;

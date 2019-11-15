@@ -44,16 +44,22 @@ const setButtonStyles = props => {
 
 const CustomButtonStyled = styled.button`
     min-width: 165px;
-    height: 50px;
+    min-height: 50px;
     letter-spacing: 0.5px;
-    line-height: 50px;
-    padding: 0 20px;
+    line-height: 1.4;
+    padding: 10px 20px;
     font-size: 15px;
     text-transform: uppercase;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: bolder;
     cursor: pointer;
     transition: color 0.2s ease-in, background-color 0.3s ease-in;
+
+    @media screen and (max-width: 800px) {
+        min-height: 40px;
+        min-width: 130px;
+        padding: 5px 10px;
+    }
 
     ${ setButtonStyles }
 `;

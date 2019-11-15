@@ -15,7 +15,7 @@ export const CartDropdownContainer = styled.div`
 
     @media screen and (max-width: 800px) {
         top: 70px;
-        right: 0;
+        right: 20px;
     }
 `;
 

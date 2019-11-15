@@ -13,11 +13,17 @@ const CheckoutItem = ({ cartItem, removeItem, decreaseItem, addItem }) => {
             </ImageDiv>
             <NameSpan>{ name }</NameSpan>
             <QuantityDiv >
-                <span onClick={ () => decreaseItem(cartItem) } >
+                <span
+                    onClick={ () => decreaseItem(cartItem) }
+                    style={{ marginLeft: 'auto' }}
+                >
                     &#10094;
                 </span>
                 <p>{ quantity }</p>
-                <span onClick={ () => addItem(cartItem) } >
+                <span
+                    onClick={ () => addItem(cartItem) }
+                    style={{ marginRight: 'auto' }}
+                >
                     &#10095;
                 </span>
             </QuantityDiv>
