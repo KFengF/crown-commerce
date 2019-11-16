@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import Header from './components/header/Header.component';
-import HomePage from './pages/home-page/Home.page';
-import ShopRouter from './pages/shop-page/Shop.router';
-import FormsPage from './pages/forms-page/Forms.page';
-import CheckoutPage from './pages/checkout-page/Checkout.page';
+import LoadingSpinner from './components/loading-spinner/LoadingSpinner.component';
 import { currentUserSelector } from './utils/redux/user/user.selectors';
 import { GlobalStyle } from './global.styles';
 
-class AppRouter extends React.Component {
+const HomePage = lazy(() => import('./pages/home-page/Home.page'));
+const ShopRouter = lazy(() => import('./pages/shop-page/Shop.router'));
+const FormsPage = lazy(() => import('./pages/forms-page/Forms.page'));
+const CheckoutPage = lazy(() => import('./pages/checkout-page/Checkout.page'));
+/* lazy es una funcion para importar dinamicamente (Asincrono) cuando el 
+componente se necesite */
+
+class AppRouter extends React.PureComponent {
+	//lo transforme a PureComponent por los comentarios
 	/* unsubscribeFromAuth = null; */
 
 	/* componentDidMount() {
@@ -58,12 +63,15 @@ class AppRouter extends React.Component {
 				<GlobalStyle />
 				<Header />
 				<Switch>
-					<Route exact path="/" component={ HomePage } />
-					<Route path="/shop" component={ ShopRouter } />
-					<Route exact path="/signin" render={ 
-						() => this.props.currentUser ? <Redirect to='/' /> : <FormsPage /> 
-					} />
-					<Route exact path="/checkout" component={ CheckoutPage } />
+					<Suspense fallback={ <LoadingSpinner /> } >
+						{/* Suspense es para que mientras se carga se ponga el fallback */}
+						<Route exact path="/" component={ HomePage } />
+						<Route path="/shop" component={ ShopRouter } />
+						<Route exact path="/signin" render={ 
+							() => this.props.currentUser ? <Redirect to='/' /> : <FormsPage /> 
+						} />
+						<Route exact path="/checkout" component={ CheckoutPage } />
+					</Suspense>
 				</Switch>
 			</BrowserRouter>
 		);

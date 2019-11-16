@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import CollectionsOverviewPage from './pages/collections-overview/CollectionsOverview.page';
-import CollectionPage from './pages/collection-page/Collection.page';
-import LoadingSpinner from '../../components/loading-spinner/LoadingSpinner.hoc';
+import LoadingSpinner from '../../components/loading-spinner/LoadingSpinner.component';
+import LoadingSpinnerHOC from '../../components/loading-spinner/LoadingSpinner.hoc';
 import { fetchCollectionsStart } from '../../utils/redux/shop/shop.actions';
 import { isCollectionsFetchingSelector, collectionsSelector } from '../../utils/redux/shop/shop.selectors';
 
-const CollsOverviewPageSpinned = LoadingSpinner(CollectionsOverviewPage);
-const CollPageSpinned = LoadingSpinner(CollectionPage);
+const CollectionsOverviewPage = lazy(() => import('./pages/collections-overview/CollectionsOverview.page'));
+const CollectionPage = lazy(() => import('./pages/collection-page/Collection.page'));
+
+const CollsOverviewPageSpinned = LoadingSpinnerHOC(CollectionsOverviewPage);
+const CollPageSpinned = LoadingSpinnerHOC(CollectionPage);
 
 const ShopRouter = ({ collections, fetchCollectionsStart, match, isCollectionsFetching }) => {
 
@@ -17,10 +19,10 @@ const ShopRouter = ({ collections, fetchCollectionsStart, match, isCollectionsFe
         if ( !Boolean(collections) ) fetchCollectionsStart();
     });
 
+    /* Match viene del componente Route que redirige a este 
+    componente, tambien estan los props history y location */
     return (
-        /* Match viene del componente Route que redirige a este 
-        componente, tambien estan los props history y location */
-        <div>
+        <Suspense fallback={ <LoadingSpinner /> }>
             <Route
                 exact path={ `${ match.path }` } 
                 render={ props => 
@@ -33,7 +35,7 @@ const ShopRouter = ({ collections, fetchCollectionsStart, match, isCollectionsFe
                     <CollPageSpinned isLoading={ isCollectionsFetching } { ...props } />
                 }
             />
-        </div>
+        </Suspense>
     );
 }
 

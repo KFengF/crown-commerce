@@ -1,12 +1,12 @@
 import React from 'react';
-import { SpinnerContainer, SpinnerOverlay } from './LoadingSpinner.styles';
+import LoadingSpinner from './LoadingSpinner.component';
 
-const LoadingSpinner = WrappedComponent => ({ isLoading, ...otherProps }) => (
+const LoadingSpinnerHOC = WrappedComponent => ({ isLoading, ...otherProps }) => (
     isLoading ? (
-        <SpinnerOverlay><SpinnerContainer /></SpinnerOverlay>
+        <LoadingSpinner />
     ) : (
         <WrappedComponent { ...otherProps } />
     )
-)
+);
 
-export default LoadingSpinner; //Este es un high order component
+export default LoadingSpinnerHOC; //Este es un high order component
