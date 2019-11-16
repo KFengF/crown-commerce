@@ -14,8 +14,7 @@ const CheckoutPage = lazy(() => import('./pages/checkout-page/Checkout.page'));
 /* lazy es una funcion para importar dinamicamente (Asincrono) cuando el 
 componente se necesite */
 
-class AppRouter extends React.PureComponent {
-	//lo transforme a PureComponent por los comentarios
+class AppRouter extends React.Component {
 	/* unsubscribeFromAuth = null; */
 
 	/* componentDidMount() {
