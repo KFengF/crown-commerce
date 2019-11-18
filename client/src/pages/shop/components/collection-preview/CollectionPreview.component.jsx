@@ -9,10 +9,12 @@ const CollectionPreview = ({ title, items }) => (
             { title }
         </TitleLink>
         <PreviewDiv>
-            { items.filter( (item, index) => index < 4 )
-            .map( (item) => (
-                <CollectionItem key={ item.id } item={ item } />
-            ))}
+            { 
+                items.slice(0, 4)
+                .map((item) => (
+                    <CollectionItem key={ item.id } item={ item } />
+                ))
+            }
         </PreviewDiv>
     </CollectionPreviewDiv>
 );

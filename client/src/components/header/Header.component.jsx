@@ -19,7 +19,7 @@ const Header = ({ currentUser, hidden, signOut }) => (
             <LinkStyled to="/shop" >
                 SHOP
             </LinkStyled>
-            <LinkStyled to="/shop" >
+            <LinkStyled to="/contact" >
                 CONTACT
             </LinkStyled>
             { currentUser ?
