@@ -12,6 +12,7 @@ const ShopRouter = lazy(() => import('../../pages/shop/Shop.router'));
 const FormsPage = lazy(() => import('../../pages/forms/Forms.page'));
 const CheckoutPage = lazy(() => import('../../pages/checkout/Checkout.page'));
 const ContactPage = lazy(() => import('../../pages/contact/Contact.page'));
+const ErrorBoundary = lazy(() => import('../error-boundary/ErrorBoundary.component'));
 /* lazy es una funcion para importar dinamicamente (Asincrono) cuando el 
 componente se necesite */
 
@@ -72,6 +73,7 @@ class AppRouter extends React.Component {
 						} />
 						<Route exact path="/checkout" component={ CheckoutPage } />
 						<Route exact path="/contact" component={ ContactPage } />
+						<Route component={ ErrorBoundary } />
 					</Suspense>
 				</Switch>
 			</BrowserRouter>
