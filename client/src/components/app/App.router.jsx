@@ -12,7 +12,7 @@ const ShopRouter = lazy(() => import('../../pages/shop/Shop.router'));
 const FormsPage = lazy(() => import('../../pages/forms/Forms.page'));
 const CheckoutPage = lazy(() => import('../../pages/checkout/Checkout.page'));
 const ContactPage = lazy(() => import('../../pages/contact/Contact.page'));
-const ErrorBoundary = lazy(() => import('../error-boundary/ErrorBoundary.component'));
+const Wrong = lazy(() => import('../something-wrong/SomethingWrong.component'));
 /* lazy es una funcion para importar dinamicamente (Asincrono) cuando el 
 componente se necesite */
 
@@ -63,9 +63,9 @@ class AppRouter extends React.Component {
 			<BrowserRouter>
 				<GlobalStyle />
 				<Header />
-				<Switch>
-					<Suspense fallback={ <LoadingSpinner /> } >
-						{/* Suspense es para que mientras se carga se ponga el fallback */}
+				<Suspense fallback={ <LoadingSpinner /> } >
+					{/* Suspense es para que mientras se carga se ponga el fallback */}
+					<Switch>
 						<Route exact path="/" component={ HomePage } />
 						<Route path="/shop" component={ ShopRouter } />
 						<Route exact path="/signin" render={ 
@@ -73,9 +73,9 @@ class AppRouter extends React.Component {
 						} />
 						<Route exact path="/checkout" component={ CheckoutPage } />
 						<Route exact path="/contact" component={ ContactPage } />
-						<Route component={ ErrorBoundary } />
-					</Suspense>
-				</Switch>
+						<Route component={ Wrong } />
+					</Switch>
+				</Suspense>
 			</BrowserRouter>
 		);
 	}
