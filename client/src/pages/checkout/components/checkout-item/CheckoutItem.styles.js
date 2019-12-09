@@ -27,6 +27,8 @@ export const ImageDiv = styled.div`
 
 export const NameSpan = styled.span`${ headerStyles }`;
 
+NameSpan.displayName = 'NameSpan';
+
 export const QuantityDiv = styled.div`
     ${ headerStyles }
 
@@ -43,8 +45,12 @@ export const QuantityDiv = styled.div`
 
 export const PriceSpan = styled.span`${ headerStyles }`;
 
+PriceSpan.displayName = 'PriceSpan';
+
 export const RemoveSpan = styled.span`
     width: 12%;
     padding-left: 12px;
     cursor: pointer;
 `;
+
+RemoveSpan.displayName = 'RemoveSpan';

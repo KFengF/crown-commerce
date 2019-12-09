@@ -10,7 +10,7 @@ import { ReactComponent as Logo } from '../../assets/crown.svg';
 import { HeaderContainer, LogoContainer, LinksContainer, LinkStyled, LinkSpan } from './Header.styles'
 /* import './Header.scss'; */
 
-const Header = ({ currentUser, hidden, signOut }) => (
+export const Header = ({ currentUser, hidden, signOut }) => (
     <HeaderContainer>
         <LogoContainer to="/" >
             <Logo />
@@ -23,7 +23,7 @@ const Header = ({ currentUser, hidden, signOut }) => (
                 CONTACT
             </LinkStyled>
             { currentUser ?
-                <LinkSpan onClick={ signOut } > LOG OUT </LinkSpan>
+                <LinkSpan onClick={ signOut } >LOG OUT</LinkSpan>
               : <LinkStyled to="/signin" >SIGN IN</LinkStyled>
               //En vez de usar LinkSpan se podria usar LinkStyled as="span"
             }

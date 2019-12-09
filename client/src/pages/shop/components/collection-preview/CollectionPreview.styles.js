@@ -18,6 +18,8 @@ export const TitleLink = styled(Link)`
     margin-right: auto;
 `;
 
+TitleLink.displayName = 'TitleLink';
+
 export const PreviewDiv = styled.div`
     display: flex;
     justify-content: space-between;

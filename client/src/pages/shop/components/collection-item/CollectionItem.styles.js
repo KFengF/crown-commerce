@@ -39,6 +39,8 @@ export const ImageDiv = styled.div`
     margin-bottom: 5px;
 `;
 
+ImageDiv.displayName = 'ImageDiv';
+
 export const CollectionFooter = styled.footer`
     width: 100%;
     height: 5%;
@@ -61,9 +63,15 @@ export const CustomButtonStyled = styled(CustomButton)`
     }
 `;
 
+CustomButtonStyled.displayName = 'CustomButtonStyled';
+
 export const NameSpan = styled.span`
     width: 90%;
     margin-bottom: 15px;
 `;
 
+NameSpan.displayName = 'NameSpan';
+
 export const PriceSpan = styled.span`margin-left: auto;`;
+
+PriceSpan.displayName = 'PriceSpan';

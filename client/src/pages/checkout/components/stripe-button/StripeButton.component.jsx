@@ -25,7 +25,7 @@ const StripeButton = ({ price }) => {
         name="CROWN COMMERCE Ltd."
         billingAddress
         shippingAddress
-        /* image="http://svgshare.com/i/CUz.svg" */
+        image="http://svgshare.com/i/CUz.svg"
         description={ `Your total is $${ price }` }
         amount={ priceForStripe }
         panelLabel="Pay Now"

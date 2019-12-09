@@ -4,8 +4,9 @@ import { removeItem, addItem, decreaseItem } from '../../../../utils/redux/cart/
 import { CheckoutItemDiv, ImageDiv, NameSpan, QuantityDiv, PriceSpan, RemoveSpan } from './CheckoutItem.styles';
 /* import './CheckoutItem.scss'; */
 
-const CheckoutItem = ({ cartItem, removeItem, decreaseItem, addItem }) => {
+export const CheckoutItem = ({ cartItem, removeItem, decreaseItem, addItem }) => {
     const { name, imageUrl, price, quantity } = cartItem;
+
     return (
         <CheckoutItemDiv>
             <ImageDiv>

@@ -1,16 +1,14 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import CustomButton from '../custom-button/CustomButton.component';
 import CartItem from '../cart-item/CartItem.component';
 import { cartItemsSelector } from '../../utils/redux/cart/cart.selectors';
 import { toggleCartDropdown } from '../../utils/redux/cart/cart.actions';
-import { CartDropdownContainer, CartItemsContainer, EmptyMessageSpan } from './CartDropdown.styles';
+import { CartDropdownContainer, CartItemsContainer, EmptyMessageSpan, CartDropdownButton } from './CartDropdown.styles';
 /* import './CartDropdown.scss'; */
 
-const customButtonStyles = { marginTop: 'auto' }
-
-const CartDropdown = ({ cartItems, history, dispatch }) => (
+//Lo exportamos para testearlo sin los hoc
+export const CartDropdown = ({ cartItems, history, dispatch }) => (
     <CartDropdownContainer>
         <CartItemsContainer>
             { cartItems.length 
@@ -20,15 +18,14 @@ const CartDropdown = ({ cartItems, history, dispatch }) => (
                 : <EmptyMessageSpan>Your cart is empty</EmptyMessageSpan>
             }
         </CartItemsContainer>
-        <CustomButton
-            styles={ customButtonStyles }
+        <CartDropdownButton
             onClick={ () => {
                 history.push('/checkout');
                 dispatch(toggleCartDropdown());
             }}
         >
             GO TO CHECKOUT
-        </CustomButton>
+        </CartDropdownButton>
     </CartDropdownContainer>
 );
 

@@ -6,7 +6,7 @@ import { CollectionPreviewDiv, TitleLink, PreviewDiv } from './CollectionPreview
 const CollectionPreview = ({ title, items }) => (
     <CollectionPreviewDiv>
         <TitleLink to={ `shop/${ title }` } >
-            { title }
+            {title}
         </TitleLink>
         <PreviewDiv>
             { 

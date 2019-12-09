@@ -46,6 +46,8 @@ export const Input = styled.input`
 `;
 /* si el input se enfoca entonces el form-input-label... */
 
+Input.displayName = 'Input';
+
 export const FormLabel = styled.label`
     color: ${ subColor };
     font-size: 16px;
@@ -59,3 +61,5 @@ export const FormLabel = styled.label`
 
     ${ setShrinkLabelStyles }
 `;
+
+FormLabel.displayName = 'FormLabel';

@@ -6,7 +6,7 @@ import { sectionsSelector } from '../../../../utils/redux/directory/directory.se
 import { DirectoryDiv } from './Directory.styles';
 /* import './Directory.scss'; */
 
-const Directory = ({ sections }) => (
+export const Directory = ({ sections }) => (
     <DirectoryDiv>
     { Object.keys(sections).map(key => {
         const { id, imageUrl, linkUrl, size } = sections[key];

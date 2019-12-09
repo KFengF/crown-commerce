@@ -38,6 +38,8 @@ export const TotalSpan = styled.span`
     }
 `;
 
+TotalSpan.displayName = 'TotalSpan';
+
 export const TestWarningP = styled.p`
     text-align: center;
     margin-top: 40px;

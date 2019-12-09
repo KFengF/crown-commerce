@@ -57,6 +57,8 @@ export const DirectoryItemDiv = styled.div`
     }
 `;
 
+DirectoryItemDiv.displayName = 'DirectoryItemDiv';
+
 export const TitleH2 = styled.h2`
     font-weight: bold;
     margin-bottom: 6px;
@@ -64,6 +66,8 @@ export const TitleH2 = styled.h2`
     color: #4a4a4a;
     text-transform: uppercase;
 `;
+
+TitleH2.displayName = 'TitleH2';
 
 export const SubtitleSpan = styled.span`
     font-weight: lighter;

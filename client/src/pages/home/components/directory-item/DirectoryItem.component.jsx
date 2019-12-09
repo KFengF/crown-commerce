@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { DirectoryItemDiv, TitleH2, SubtitleSpan } from './DirectoryItem.styles';
 /* import './DirectoryItem.scss'; */
 
-const DirectoryItem = ({ title, imageUrl, size, linkUrl, history, match }) => (
+export const DirectoryItem = ({ title, imageUrl, size, linkUrl, history, match }) => (
     <DirectoryItemDiv
         size={ size }
         onClick={ () => history.push(`${ match.url }${ linkUrl }`) }

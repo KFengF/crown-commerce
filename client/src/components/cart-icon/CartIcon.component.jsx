@@ -6,7 +6,7 @@ import { CartIconContainer, ShoppingIconStyled, ItemCountSpan } from './CartIcon
 /* import { ReactComponent as ShoppingIcon } from '../../assets/shoppingBag.svg';
 import './CartIcon.scss'; */
 
-const CartIcon = ({ toggleCartDropdown, itemCount }) => (
+export const CartIcon = ({ toggleCartDropdown, itemCount }) => (
     <CartIconContainer onClick={ toggleCartDropdown } >
         <ShoppingIconStyled />
         <ItemCountSpan>{ itemCount }</ItemCountSpan>

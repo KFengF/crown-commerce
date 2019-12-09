@@ -11,6 +11,8 @@ export const CartIconContainer = styled.div`
     cursor: pointer;
 `;
 
+CartIconContainer.displayName = 'CartIconContainer';
+
 export const ShoppingIconStyled = styled(ShoppingIcon)`
     width: 24px;
     height: 24px;
@@ -22,3 +24,5 @@ export const ItemCountSpan = styled.span`
     font-weight: bold;
     bottom: 12px;
 `;
+
+ItemCountSpan.displayName = 'ItemCountSpan';

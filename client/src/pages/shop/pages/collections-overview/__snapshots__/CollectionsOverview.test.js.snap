@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CollectionOverview page should render CollectionOverview page 1`] = `ShallowWrapper {}`;

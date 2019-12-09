@@ -6,7 +6,7 @@ import { collectionsSelector } from '../../../../utils/redux/shop/shop.selectors
 import { CollectionsOverviewDiv } from './CollectionsOverview.styles';
 /* import './CollectionsOverview.scss'; */
 
-const CollectionsOverviewPage = ({ collections }) => (
+export const CollectionsOverviewPage = ({ collections }) => (
     <CollectionsOverviewDiv>
         { collections && 
             Object.keys(collections).map(key => {

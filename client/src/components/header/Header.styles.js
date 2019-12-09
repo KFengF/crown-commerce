@@ -50,4 +50,8 @@ export const LinksContainer = styled.div`
 
 export const LinkStyled = styled(Link)`${ linkStyles }`;
 
+LinkStyled.displayName = 'LinkStyled';
+
 export const LinkSpan = styled.span`${ linkStyles }`;
+
+LinkSpan.displayName = 'LinkSpan';

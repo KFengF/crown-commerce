@@ -5,12 +5,12 @@ import { singleCollectionSelector } from '../../../../utils/redux/shop/shop.sele
 import { CollectionPageDiv, CollectionTitleH2, CollectionItemsDiv } from './Collection.styles';
 /* import './CollectionPage.scss'; */
 
-const CollectionPage = ({ collection }) => {
+export const CollectionPage = ({ collection }) => {
     if (collection) {
         const { title, items } = collection;
         return (
             <CollectionPageDiv>
-                <CollectionTitleH2>{ title }</CollectionTitleH2>
+                <CollectionTitleH2>{title}</CollectionTitleH2>
                 <CollectionItemsDiv>
                     { items.map(item => 
                         <CollectionItem key={ item.id } item={ item } />

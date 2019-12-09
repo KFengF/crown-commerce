@@ -10,7 +10,7 @@ import {
 } from './CollectionItem.styles';
 /* import './CollectionItem.scss'; */
 
-const CollectionItem = ({ item, addItem }) => {
+export const CollectionItem = ({ item, addItem }) => {
     const { name, price, imageUrl } = item;
     return (
         <CollectionItemDiv>
@@ -18,8 +18,8 @@ const CollectionItem = ({ item, addItem }) => {
                 style={{ backgroundImage: `url(${ imageUrl })` }}
             />
             <CollectionFooter>
-                <NameSpan>{ name }</NameSpan>
-                <PriceSpan>{ price }</PriceSpan>
+                <NameSpan>{name}</NameSpan>
+                <PriceSpan>{price}</PriceSpan>
             </CollectionFooter>
             <CustomButtonStyled
                 inverted 

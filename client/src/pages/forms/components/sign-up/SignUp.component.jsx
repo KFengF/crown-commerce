@@ -6,7 +6,7 @@ import { signUpStart } from '../../../../utils/redux/user/user.actions'
 import { SignUpDiv, SignUpTitleH2, SignUpSpan } from './SignUp.styles';
 /* import './SignUp.scss'; */
 
-const SignUp = ({ signUpStart }) => {
+export const SignUp = ({ signUpStart }) => {
     const initialState = {
         displayName: '',
         email: '',
@@ -21,7 +21,7 @@ const SignUp = ({ signUpStart }) => {
         event.preventDefault();
 
         if ( password !== confirmPassword ) {
-            alert('passwords dont match');
+            alert("passwords don't match");
             return;
         }
 
